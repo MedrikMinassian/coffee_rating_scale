@@ -1,0 +1,34 @@
+echo "# coffee_rating_scale" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/MedrikMinassian/coffee_rating_scale.git
+git push -u origin main
+
+def create_coffee_rating_scale():
+    coffee_roasts = {
+        'Light Roast': None,
+        'Medium Roast': None,
+        'Dark Roast': None,
+        'Espresso': None
+    }
+
+    print("Welcome to the Coffee Roast Rating Scale!")
+
+    for roast in coffee_roasts:
+        rating = input(f"Rate {roast} on a scale from 1 to 10: ")
+        while not rating.isdigit() or not (1 <= int(rating) <= 10):
+            print("Please enter a valid rating between 1 and 10.")
+            rating = input(f"Rate {roast} on a scale from 1 to 10: ")
+
+        coffee_roasts[roast] = int(rating)
+
+    print("\nCoffee Roast Ratings:")
+    for roast, rating in coffee_roasts.items():
+        print(f"{roast}: {rating}/10")
+
+
+# Run the function to create the coffee rating scale
+create_coffee_rating_scale()
+
